@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <script>
+        let sentinelStep =0;
+        let pauseSystem = false;
+        
+        let animationValues =[
+             {itemValue:20, positionX:30, positionY:40,boxPositionX:20,boxPositionY:20},
+             {itemValue:25, positionX:60, positionY:40,boxPositionX:50,boxPositionY:20},
+             {itemValue:21, positionX:90, positionY:40,boxPositionX:80,boxPositionY:20},
+             {itemValue:20, positionX:120, positionY:40,boxPositionX:110,boxPositionY:20},
+             {itemValue:10, positionX:150, positionY:40,boxPositionX:140,boxPositionY:20}
+            ];
+        let xpos1=30;
+                    let xpos2=60;
+                    let xpos3=90;
+                    let xpos4=120;
+                    let xpos5=150;
+
+			function setup(){
+				createCanvas(500, 500);
+				background(64);
+                fill(255);
+                for(let i=0;i<animationValues.length; i++){
+                    const av = animationValues[i];
+                    rect(animationValues[i].boxPositionX, animationValues[i].boxPositionY, 30, 30);
+                }
+               
+                
+				
+                
+                
+			}
+			let first = true;
+            let sortStarted = true;
+            let sortEnded =false;
+    var    fr = 30;
+			function draw(){
+                
+                frameRate(30)
+                xpos5 = xpos5 += 1; // Move Rectangle
+                xpos1 = xpos1 -= 1;
+                xpos2 = xpos2 += 1;
+                xpos3 = xpos3 -= 1;
+                xpos4 = xpos4 += 1;
+                if (xpos5 >= ) {
+                    // If you go off screen.
+                    if (fr === 30) {
+                        clr = color(0, 0, 255);
+                        fr = 10;
+                        frameRate(fr); // make frameRat e 10 FPS
+                    } else {
+                        clr = color(255, 0, 0);
+                        fr = 30;
+                        frameRate(fr); // make frameRate 30 FPS
+                    }
+                    
+                }
+                fill(0, 102, 153);
+                text(20, xpos1,40);
+                text(25, xpos2,40);                     
+                text(21, xpos3,40);
+                text(20, xpos4, 40);
+                text(10, xpos5,40);
+			}
+        
+            function flip(item1, item2){
+                if(animationValues[item1].itemValue >  animationValues[item2].itemValue){
+                    
+                }
+                return "wait";
+            }
+            function endsort(itemend){
+                fill(0, 102, 153);
+                frameRate()
+                    rect(animationValues[itemend].boxPositionX, animationValues[itemend].boxPositionY, 30, 30);
+                    fill(255)
+                    text( animationValues[itemend].itemValue,  animationValues[itemend].positionX,  animationValues[itemend].positionY);
+                return "wait";
+            }
+            function start(){
+                sz= animationValues.length;
+               for(i;i<sz-1;i++){
+                   for(j;j<sz-i-1;j++){
+                     setTimeout(flip(j,j+1), 200000);  
+                      
+                    if(pauseSystem== true){
+                           break;
+                       }
+                   }
+                   if(pauseSystem ){
+                       break;
+                   }else{
+                        
+                       setTimeout(endsort(sz-i-1), 2000000);
+                       j=0;
+                   }
+               }     
+            }
+        
+        
+		</script>
+</head>
+<body>
+    <button ></button>
+</body>
+</html>
